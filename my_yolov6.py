@@ -124,5 +124,5 @@ class my_yolov6():
                 self.plot_box_and_label(img_src, max(round(sum(img_src.shape) / 2 * 0.003), 2), xyxy, label, color=(255,0,0))
 
             img_src = np.asarray(img_src)
-
+            print(det)
         return img_src, len(det)

@@ -1,143 +1,91 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <title>OBJECT DETECTION YOLOV6</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <style>
-        body {
-            padding: 0px;
-            margin: 0px;
-            font-family: Arial, Helvetica, sans-serif;
-            color:white;
+        html,body,h1,h2,h3,h4,h5 {
+            font-family: "Raleway", sans-serif
         }
-
-        body, html {
-                  height: 100%;
-                }
-            html, body {
-                padding: 0px;
-                margin: 0px;
-                background-color: #8c8c8c;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                height: 100%;
-                overflow-x: scroll;
-            }
-
-        .header {
-            background-color: rgba(0, 0, 0, 0.3);
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: large;
-            color:white;
-
-            text-align: center;
-            padding: 30px;
-        }
-        .footer
-        {
-
-        }
-
-        .info
-        {
-            text-align:left;
-            color:gray;
-            width:30%;
-            margin:auto;
-            padding:20px;
-            font-size:14px;
-        }
-
-
-        .content {
-            width: 100%;
-        }
-
-        .upload_part {
-            background-color: rgba(0, 0, 0, 0.3);
-            text-align: center;
-            padding: 40px;
-        }
-
-        .upload_button {
-            background-color: #FEED06;
-            color: black;
-            padding: 15px;
-            font-size: 16px;
-            border: 0px;
-            border-radius: 5px;
-            -webkit-box-shadow: 6px 8px 18px -5px rgba(0, 0, 0, 0.38);
-            -moz-box-shadow: 6px 8px 18px -5px rgba(0, 0, 0, 0.38);
-            box-shadow: 6px 8px 18px -5px rgba(0, 0, 0, 0.38);
-            cursor: pointer;
-        }
-
-        .upload_hint {
-            margin: 10px;
-            font-size: 14px;
-            color: rgb(200, 200, 200);
-        }
-
-        .result_part {
-            text-align: center;
-            padding: 40px;
-        }
-
-        .result_title {
+        .icon-navbar{
             font-size: 18px;
-            font-weight: bold;
         }
-
-        .result_id {
-            padding: 10px;
-            margin: 15px;
-            font-size: 16px;
-
-        }
-
-        .result_id_number {
-            margin: 15px;
-            padding: 10px;
-            padding-left: 15px;
-            padding-right: 15px;
-            background-color: #FEED06;
-            color: black;
-            font-weight: bold;
-            font-size: 18px;
-            border-radius: 5px;
-
-        }
-
     </style>
 </head>
 
-<body>
-<div class='header'>
-    DEMO NHẬN DIỆN YOLOV6
-</div>
-<div class='content'>
-    <a href="webcam_feed">WebCam</a>
-    <div class='upload_part'>
-        <button class='upload_button' id="upload_button">Chọn file ảnh để nhận diện...</button>
-        <div class='upload_hint' id='upload_hint'>
-                Các định dạng được hỗ trợ: PNG, JPG và JPEG.
+<body class="w3-light-grey">
+     <!-- Top container -->
+    <div class="w3-bar w3-top w3-white w3-large" style="z-index:4">
+        <span class="w3-bar-item w3-right">
+            <div>
+                <i class='bx bx-search-alt-2'  style="margin-right: 8px; font-size: 22px;"></i>
+                <i class='bx bx-message-rounded-dots' style="margin-right: 8px; font-size: 22px;"></i>
+                <i class='bx bxs-bell-ring' style="margin-right: 8px; font-size: 22px;"></i>
+                <i class='bx bx-exit-fullscreen' style="margin-right: 8px; font-size: 22px;"></i>
+                <i class='bx bx-menu' style="font-size: 22px;"></i>
+            </div>
+        </span>
+    </div>
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px; background-color: #292848;" id="mySidebar"><br>
+        <div class="w3-container w3-row" style="color: #fff;">
+            <div class="w3-col s8 w3-bar" style="font-size: 22px;">
+                <span>Object Detection</span>
+                <strong class="w3-center" style="font-size: 26px;">
+                    <i class='bx bxs-hot' ></i>
+                    YOLOV6
+                </strong>
+                <br>
+            </div>
+        </div>
+        <hr>
+        <div class="w3-container" style="color: #fff; ">
+            <h5>Dashboard</h5>
+        </div>
+        <div class="w3-bar-block" style="color: #fff;">
+            <div class='upload_part'>
+                <a href="#" class="w3-bar-item w3-button w3-padding" style="font-weight: 600;" class='upload_button' id="upload_button">
+                    <i class='bx bx-image-alt icon-navbar'></i>
+                    Image & Video Detection Results 
+                </a>
+            </div>
+            <!-- <a href="video" class="w3-bar-item w3-button w3-padding" class='upload_button' id="upload_button">
+                <i class='bx bxs-videos icon-navbar' ></i>
+                Video Detection Results
+            </a> -->
+            <a href="webcam_feed" class="w3-bar-item w3-button w3-padding" style="font-weight: 600;">
+                <i class='bx bx-camera-movie icon-navbar' ></i>
+                WebCam
+            </a>
+        </div>
+    </nav>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    <div class="w3-main" style="margin-left:50px;">
+        <div class="w3-twothird w3-container w3-white" style="margin-top:80px; height: 800px; width: 1500px;">
+            <div class='result_title' style="font-size: 25px; margin: 15px 0;"><b>Kết quả nhận diện</b></div>
+            <hr style="margin: 0;">
+            {% if msg %}
+            <div class='result_id' style="font-size: 18px;margin: 10px 0;">{{ msg }}...</div>
+            {% if user_image %}
+            <div style="text-align: center;">
+                <img style="max-width:560px; max-height: 600px; border-radius:1rem;" src="{{ url_for('static', filename=user_image) }}?{{ rand }}">
+            </div>  
+            {% endif %}
+            {% endif %} 
         </div>
         <form action="/" method="POST" enctype="multipart/form-data" id='form'>
-            <input type="file" name="file" id="fileinput" style="display: none;" accept="image/*">
+            <input type="file" name="file" id="fileinput" style="display: none;" accept="video/* , image/*">
         </form>
-    </div>
-
-    <div class='result_part'>
-        {% if msg %}
-        <div class='result_title'><b>Kết quả nhận diện</b></div>
-        <div class='result_id'>{{ msg }}</div>
-        {% if user_image %}
-        <img style="max-width:560px; border-radius:1rem" src="{{ url_for('static', filename=user_image) }}?{{ rand }}"
-             alt="User Image">
-        {% endif %}
-        {% endif %}
     </div>
 </div>
 <div class='footer'>
